@@ -1,4 +1,4 @@
-public abstract class MyArrayList <T>  implements MyList <T> {
+public class MyArrayList <T>  implements MyList <T> {
     private Object[] elements;
     private int size;
 

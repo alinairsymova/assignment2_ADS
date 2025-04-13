@@ -1,18 +1,20 @@
-public class MyLinkedList <T> implements MyList <T> {
+public class MyLinkedList<T> implements MyList<T> {
+    // Internal class representing a node in the linked list
     private class MyNode {
-        T data;
-        MyNode next;
-        MyNode prev;
+        T data; // Node's data
+        MyNode next; // Reference to the next node
+        MyNode prev; // Reference to the previous node
 
         public MyNode(T data) {
             this.data = data;
         }
     }
 
-    private MyNode head;
-    private MyNode tail;
-    private int size;
+    private MyNode head; // First node of the list
+    private MyNode tail; // Last node of the list
+    private int size; // Size of the list
 
+    // Adds an item to the end of the list
     @Override
     public void add(T item) {
         MyNode newNode = new MyNode(item);
@@ -27,8 +29,7 @@ public class MyLinkedList <T> implements MyList <T> {
         size++;
     }
 
-
-
+    // Sets the element at the specified index
     @Override
     public void set(int index, T item) {
         if (index < 0 || index >= size) {
@@ -41,7 +42,7 @@ public class MyLinkedList <T> implements MyList <T> {
         current.data = item;
     }
 
-
+    // Adds an element at the specified index
     @Override
     public void add(int index, T item) {
         if (index < 0 || index > size) {
@@ -74,18 +75,19 @@ public class MyLinkedList <T> implements MyList <T> {
         size++;
     }
 
-
-
+    // Adds an element to the beginning of the list
     @Override
     public void addFirst(T item) {
         add(0, item);
     }
 
+    // Adds an element to the end of the list
     @Override
     public void addLast(T item) {
         add(size, item);
     }
 
+    // Gets the element at the specified index
     @Override
     public T get(int index) {
         if (index < 0 || index >= size) {
@@ -98,20 +100,21 @@ public class MyLinkedList <T> implements MyList <T> {
         return currentNode.data;
     }
 
-
+    // Gets the first element in the list
     @Override
     public T getFirst() {
         if (size == 0) throw new IndexOutOfBoundsException();
         return head.data;
     }
 
+    // Gets the last element in the list
     @Override
     public T getLast() {
         if (size == 0) throw new IndexOutOfBoundsException();
         return tail.data;
     }
 
-
+    // Removes the element at the specified index
     @Override
     public void remove(int index) {
         if (index < 0 || index >= size) {
@@ -135,7 +138,7 @@ public class MyLinkedList <T> implements MyList <T> {
         size--;
     }
 
-
+    // Removes the first element in the list
     @Override
     public void removeFirst() {
         if (size == 0) throw new IndexOutOfBoundsException();
@@ -145,6 +148,7 @@ public class MyLinkedList <T> implements MyList <T> {
         size--;
     }
 
+    // Removes the last element in the list
     @Override
     public void removeLast() {
         if (size == 0) throw new IndexOutOfBoundsException();
@@ -154,7 +158,7 @@ public class MyLinkedList <T> implements MyList <T> {
         size--;
     }
 
-
+    // Sorts the list using insertion sort
     @Override
     public void sort() {
         if (size <= 1) return;
@@ -177,7 +181,7 @@ public class MyLinkedList <T> implements MyList <T> {
         }
     }
 
-
+    // Finds the index of the first occurrence of an object
     @Override
     public int indexOf(Object object) {
         MyNode current = head;
@@ -190,6 +194,7 @@ public class MyLinkedList <T> implements MyList <T> {
         return -1;
     }
 
+    // Finds the index of the last occurrence of an object
     @Override
     public int lastIndexOf(Object object) {
         MyNode current = tail;
@@ -202,7 +207,7 @@ public class MyLinkedList <T> implements MyList <T> {
         return -1;
     }
 
-
+    // Checks if an object exists in the list
     @Override
     public boolean exists(Object object) {
         MyNode current = head;
@@ -213,7 +218,7 @@ public class MyLinkedList <T> implements MyList <T> {
         return false;
     }
 
-
+    // Converts the list to an array
     @Override
     public Object[] toArray() {
         Object[] array = new Object[size];
@@ -226,7 +231,7 @@ public class MyLinkedList <T> implements MyList <T> {
         return array;
     }
 
-
+    // Clears the list
     @Override
     public void clear() {
         head = null;
@@ -234,12 +239,13 @@ public class MyLinkedList <T> implements MyList <T> {
         size = 0;
     }
 
-
+    // Returns the size of the list
     @Override
     public int size() {
         return size;
     }
 
+    // Returns a string representation of the list
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
@@ -252,6 +258,4 @@ public class MyLinkedList <T> implements MyList <T> {
         sb.append("]");
         return sb.toString();
     }
-
-
 }
